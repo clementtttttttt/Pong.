@@ -207,11 +207,14 @@ void ai_calc_dest(){
 }
 
     Mix_Chunk* beep;
+    unsigned short *audio;
 
 void pad_beep(float len_ims, int freq){
 
+
     Mix_FreeChunk(beep);
-    unsigned short *audio;
+    delete[] audio;
+
 
     audio = new unsigned short[(unsigned int)(len_ims/1000*48000)];
 
@@ -232,7 +235,6 @@ void pad_beep(float len_ims, int freq){
 
     Mix_PlayChannel(-1,beep, 0);
 
-    delete[] audio;
 }
 
 int beeping = 0;
@@ -356,8 +358,8 @@ void ai2tick(){
 }
 
 
-
- int game_tick(){
+int running = 1;
+ void game_tick(){
 
         SDL_Event event;
 
@@ -365,7 +367,7 @@ void ai2tick(){
             switch(event.type){
                 case SDL_QUIT:
 
-                    return 1;
+                    running = 0;
                     break;
 
                 case SDL_KEYDOWN:
@@ -425,7 +427,7 @@ void ai2tick(){
 
         sdl->draw();
 
-        return 0;
+        return;
 }
 
 int main( int argc, char * argv[] )
@@ -452,7 +454,9 @@ int main( int argc, char * argv[] )
     #ifdef EMCXX
         emscripten_set_main_loop((void(*)())game_tick,60,1);
     #else
-        while(!game_tick());
+        while(running){
+            game_tick();
+        };
 
     #endif
     TTF_CloseFont(font);
