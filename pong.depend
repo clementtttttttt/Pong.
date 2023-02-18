@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1676485764 source:/home/clement/Desktop/pong/pong/main.cpp
+1676495772 source:/home/clement/Desktop/pong/pong/main.cpp
 	<exception>
 	<string>
 	<iostream>
@@ -397,7 +397,7 @@
 	"begin_code.h"
 	"close_code.h"
 
-1676482348 /home/clement/Desktop/pong/pong/main.h
+1676761467 /home/clement/Desktop/pong/pong/main.h
 	<SDL_mixer.h>
 
 1675780619 /usr/include/SDL2/SDL_mixer.h

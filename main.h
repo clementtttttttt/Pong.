@@ -70,6 +70,7 @@ SDL::SDL( Uint32 flags )
     if ( SDL_Init( flags ) != 0 )
         throw InitError();
 SDL_SetHint(SDL_HINT_RENDER_VSYNC, "1");
+SDL_SetHint(SDL_HINT_EMSCRIPTEN_KEYBOARD_ELEMENT,"#canvas");
     if ( SDL_CreateWindowAndRenderer( 858, 525, SDL_WINDOW_SHOWN,
                                       &m_window, &m_renderer ) != 0 )
         throw InitError();
