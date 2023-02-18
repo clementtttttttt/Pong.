@@ -211,10 +211,10 @@ void ai_calc_dest(){
 
 void pad_beep(float len_ims, int freq){
 
-
-    Mix_FreeChunk(beep);
-    delete[] audio;
-
+    if(beep){
+        Mix_FreeChunk(beep);
+        delete[] audio;
+    }
 
     audio = new unsigned short[(unsigned int)(len_ims/1000*48000)];
 
